@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <title>KeyCode & preventDefault</title>
+  </head>
+  <body>
+
+    <div class="title">
+      <h1>Welcome to 100 Days JavaScript Challenge</h1>
+      <p>I started this challenge for JavaScript learning</p>
+      <p class="notice"><span>Day#1</span> KeyCode & preventDefault</p>
+      <p class="notice">Use the keyboard arrows</p>
+    </div>
+
+<div id="movingDiv" style="top: 0; left: 0;">
+  <div class="left-eye"></div>
+  <div class="right-eye"></div>
+  <div class="mouth"></div>
+  <div class="tongue"></div>
+</div>
+
+    <script>
+      window.onload = function() {
+        divObj = document.getElementById("movingDiv");
+        window.onkeydown = function(e) {
+          e.preventDefault();
+
+          if (!e) {
+            e = window.event;
+          }
+          var keyCode;
+          if (e.which) {
+            keyCode = e.which;
+          } else {
+            keyCode = e.keyCode;
+          }
+          var speed = 10;
+          if (keyCode == 37) {
+            divObj.style.left = (parseInt(divObj.style.left) - speed) + "px";
+          }
+           else if (keyCode == 38) {
+            divObj.style.top = (parseInt(divObj.style.top) - speed) + "px";
+          }
+          else if (keyCode == 39) {
+            divObj.style.left = (parseInt(divObj.style.left) + speed) + "px";
+          }
+          else if (keyCode == 40) {
+            divObj.style.top = (parseInt(divObj.style.top) + speed) + "px";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
